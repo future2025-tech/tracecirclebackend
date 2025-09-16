@@ -1,6 +1,6 @@
 package com.tracecirclebackend.controller;
 
-import com.tracecirclebackend.entity.User;
+import com.tracecirclebackend.entity.UserEntity;
 import com.tracecirclebackend.service.UserService;
 
 import jakarta.transaction.Transactional;
@@ -25,8 +25,9 @@ public class AuthController {
     public ResponseEntity<?> signup(@RequestBody Map<String, String> body) {
         String email = body.get("email");
         String password = body.get("password");
-        User user = userService.registerUser(email, password);
-        return ResponseEntity.ok(Map.of("message", "Signup successful", "userId", user.getId()));
+        UserEntity user = userService.registerUser(email, password);
+        return ResponseEntity.ok(Map.of("message", "Signup successful", 
+        		"userId", user.getId()));
     }
 
     @PostMapping("/login")
@@ -36,7 +37,8 @@ public class AuthController {
 
         return userService.loginUser(email, password)
                 .map(user -> ResponseEntity.ok(Map.of("message", "Login successful")))
-                .orElse(ResponseEntity.status(401).body(Map.of("error", "Invalid credentials")));
+                .orElse(ResponseEntity.status(401).body(Map.of("error", 
+                		"Invalid credentials")));
     }
     
     @Transactional
@@ -47,7 +49,8 @@ public class AuthController {
         String confirmPassword = body.get("confirmPassword");
 
         if (!password.equals(confirmPassword)) {
-            return ResponseEntity.badRequest().body(Map.of("error", "Passwords do not match"));
+            return ResponseEntity.badRequest().body(Map.of("error",
+            		"Passwords do not match"));
         }
 
         boolean updated = userService.updatePassword(email, password);
@@ -59,4 +62,3 @@ public class AuthController {
         }
     }
 }
-

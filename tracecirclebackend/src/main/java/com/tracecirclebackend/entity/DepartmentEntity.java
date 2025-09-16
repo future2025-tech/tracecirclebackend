@@ -13,15 +13,18 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "TC_ORGANIZATIONS")
-public class Organization {
+@Table(name = "TC_DEPARTMENTS")
+public class DepartmentEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long departmentId;
 
-    private String name;
-    private String address;
-    private String location;
-
+    private String departmentName;
+    
+    private String departmentActions;
+    
+    private String departmentOrganization;
+    
+    @Version
+    private Long version;
 }
