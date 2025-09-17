@@ -54,7 +54,6 @@ public class ProductServiceImpl implements ProductService {
                 .orElseThrow(() -> new NoSuchElementException(
                 		"Product not found with ID: " + id));
 
-		entity.setOrganizationId(updatedProd.getOrganizationId());
         entity.setProductName(updatedProd.getProductName());
         entity.setProductCategory(updatedProd.getProductCategory());
         entity.setCompliance(updatedProd.getCompliance());

@@ -24,6 +24,7 @@ public class OrganizationEntity {
 
     private String organizationName;
     
+    @Enumerated(EnumType.STRING)  
     private Status organizationStatus;
     
     private String organizationLocation;

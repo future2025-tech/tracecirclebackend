@@ -1,6 +1,7 @@
 package com.tracecirclebackend.DTO;
 
-import java.io.ObjectInputFilter.Status;
+
+import com.tracecirclebackend.constants.Status;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class OrganizationDTO {
 	
-	private Long orianizationId;
+	private Long organizationId;
 
     private String organizationName;
     

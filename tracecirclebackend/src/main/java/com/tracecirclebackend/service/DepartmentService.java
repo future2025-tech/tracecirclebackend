@@ -6,7 +6,7 @@ import com.tracecirclebackend.DTO.DepartmentDTO;
 
 public interface DepartmentService {
 
-	public DepartmentDTO saveDepartment(DepartmentDTO department) ;
+	public DepartmentDTO saveDepartment(DepartmentDTO department);
 
     public List<DepartmentDTO> getAllDepartments();
     

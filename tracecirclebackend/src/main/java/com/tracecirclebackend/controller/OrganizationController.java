@@ -54,7 +54,7 @@ public class OrganizationController {
     }
     
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteDepartment(@PathVariable Long id) {
+    public ResponseEntity<OrganizationDTO> deleteDepartment(@PathVariable Long id) {
         OrganizationDTO deleted = service.deleteOrganization(id);
 
         if (deleted == null) {

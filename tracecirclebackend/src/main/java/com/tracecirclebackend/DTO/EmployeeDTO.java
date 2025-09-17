@@ -3,6 +3,7 @@ package com.tracecirclebackend.DTO;
 import com.tracecirclebackend.constants.Gender;
 import com.tracecirclebackend.constants.Roles;
 import com.tracecirclebackend.constants.Status;
+import com.tracecirclebackend.entity.OrganizationEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,7 +16,7 @@ public class EmployeeDTO {
 	
 	private Long employeeId;
 
-	private Long organizationId;   
+	private OrganizationEntity organizationId;   
 
     private Long departmentId;     
 	    

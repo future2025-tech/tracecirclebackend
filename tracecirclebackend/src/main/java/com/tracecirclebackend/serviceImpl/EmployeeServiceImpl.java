@@ -45,11 +45,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public EmployeeDTO updateEmployee(Long id, EmployeeDTO dto) {
 	    EmployeeEntity existing = employeeRepository.findById(id)
-	        .orElseThrow(() -> new IllegalArgumentException("Employee not found with id: " + id));
+	        .orElseThrow(() -> new IllegalArgumentException(
+	        		"Employee not found with id: " + id));
 
 	    existing.setEmployeeName(dto.getEmployeeName());
 	    existing.setDepartmentId(dto.getDepartmentId());
-	    existing.setOrganizationId(dto.getOrganizationId());
 	    existing.setEmployeeGender(dto.getEmployeeGender());
 	    existing.setEmployeeRoles(dto.getEmployeeRoles());
 	    existing.setEmployeeActions(dto.getEmployeeActions());
