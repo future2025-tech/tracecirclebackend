@@ -14,13 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tracecirclebackend.DTO.LogisticsDTO;
 import com.tracecirclebackend.serviceImpl.LogisticServiceImpl;
 
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 
 @RestController
-@RequestMapping("logistics")
+@RequestMapping("/logistics")
 @AllArgsConstructor
-@Table(name="TC_LOGISTICS")
 public class LogisticController {
 	
 	private final LogisticServiceImpl logisticServiceImpl;
@@ -37,20 +35,20 @@ public class LogisticController {
 		return logisticServiceImpl.getAllLogistics();
 	}
 	
-	@GetMapping("{/id}")
+	@GetMapping("/{id}")
 	public LogisticsDTO getLogisticsById(@PathVariable Long id) {
 		
 		return logisticServiceImpl.getLogisticById(id);
 	}
 	
-	@PutMapping
+	@PutMapping("/{id}")
 	public LogisticsDTO updateLogistic(@PathVariable Long id,
 			@RequestBody LogisticsDTO logisticsDTO) {
 		
 		return logisticServiceImpl.updateLogistic(id, logisticsDTO);
 	}
 	
-	@DeleteMapping
+	@DeleteMapping("/{id}")
 	public LogisticsDTO deleteLogistic(@PathVariable Long id) {
 		
 		return logisticServiceImpl.delateLogistic(id);

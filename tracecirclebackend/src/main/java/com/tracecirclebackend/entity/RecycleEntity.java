@@ -1,12 +1,10 @@
 package com.tracecirclebackend.entity;
 
-import com.tracecirclebackend.constants.Compliance;
-import com.tracecirclebackend.constants.ProductCategory;
+import java.util.Locale.Category;
+
 import com.tracecirclebackend.constants.Status;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,34 +13,31 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
-@Table(name = "TC_PRODUCTS")
-public class ProductEntity {
+@Table(name="TC_RECYCLE")
+public class RecycleEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long productId;
+	private Long recycleId;
 	
 	@ManyToOne(optional = false)
     @JoinColumn(name = "organization_id", nullable = false)
 	private OrganizationEntity organizationId;
 	
-	private String ProductName;
+	@ManyToOne(optional = false)
+    @JoinColumn(name = "organization_name", nullable = false)
+	private OrganizationEntity organizationName;
 	
-    @Enumerated(EnumType.STRING)  
-	private ProductCategory productCategory;
+	private String recycleLocation;
 	
-    @Enumerated(EnumType.STRING)  
-	private Compliance compliance;
-    
-    @Enumerated(EnumType.STRING)  
-	private Status productStatus;
+	private Category recycleCategory;
 	
-	private String productActions;
+	private Status recycleStatus;
+	
+	private String recycleAction;
 
 }

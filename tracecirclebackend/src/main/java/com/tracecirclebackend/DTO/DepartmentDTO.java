@@ -1,5 +1,7 @@
 package com.tracecirclebackend.DTO;
 
+import com.tracecirclebackend.entity.OrganizationEntity;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +17,6 @@ public class DepartmentDTO {
     
     private String departmentActions;
     
-    private String departmentOrganization; 
+    private OrganizationEntity departmentOrganization; 
 
 }

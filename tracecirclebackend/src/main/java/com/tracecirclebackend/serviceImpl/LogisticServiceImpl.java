@@ -5,9 +5,7 @@ import java.util.List;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import com.tracecirclebackend.DTO.EmployeeDTO;
 import com.tracecirclebackend.DTO.LogisticsDTO;
-import com.tracecirclebackend.entity.EmployeeEntity;
 import com.tracecirclebackend.entity.LogisticsEntity;
 import com.tracecirclebackend.repository.LogisticRepository;
 import com.tracecirclebackend.service.LogisticService;
@@ -53,11 +51,12 @@ public class LogisticServiceImpl implements LogisticService {
 		LogisticsEntity existing = logisticRepository.findById(id)
 		        .orElseThrow(() -> new IllegalArgumentException(
 		        		"Logistic not found with id: " + id));
-
-		    existing.setLogisticsName(dto.getLogisticName());
-		    existing.setLogisticsLocation(dto.getLogisticLocation());
-		    existing.setLogisticsStatus(dto.getLogisticStatus());
-		    existing.setLogisticsActions(dto.getLogisticAction());
+		
+		existing.setLogisticsId(dto.getLogisticsId());
+		existing.setLogisticsName(dto.getLogisticsName());
+	    existing.setLogisticsLocation(dto.getLogisticsLocation());
+	    existing.setLogisticsStatus(dto.getLogisticsStatus());
+	    existing.setLogisticsActions(dto.getLogisticsActions());
 
 		    LogisticsEntity saved = logisticRepository.save(existing);
 		    return modelMapper.map(saved, LogisticsDTO.class);

@@ -11,15 +11,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class LogisticsDTO {
 
-	private Long logisticId;
+	private Long logisticsId;
 	
 	private OrganizationDTO organizationId;
 	
-	private String logisticName;
+	private String logisticsName;
 	
-	private String logisticLocation;
+	private String logisticsLocation;
 	
-	private Status logisticStatus;
+	private Status logisticsStatus;
 	
-	private String logisticAction;
+	private String logisticsActions;
 }
