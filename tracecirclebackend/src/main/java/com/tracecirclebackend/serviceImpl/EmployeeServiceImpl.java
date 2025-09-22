@@ -20,12 +20,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 	private final ModelMapper modelMapper;
 
 	@Override
-	public EmployeeDTO saveEmployee(EmployeeDTO employee) {
-		EmployeeEntity entity = modelMapper.map(employee, EmployeeEntity.class);
+	public EmployeeDTO createEmployee(EmployeeDTO employee) {
+		 EmployeeEntity entity = modelMapper.map(employee, EmployeeEntity.class);
 
-        EmployeeEntity savedEntity = employeeRepository.save(entity);
+	        // Generate custom ID
+	        String maxId = employeeRepository.findMaxId();
+	        int nextNum = (maxId == null) ? 1 : Integer.parseInt(maxId.substring(4)) + 1;
+	        entity.setEmployeeId(String.format("EMP-%04d", nextNum));
 
-        return modelMapper.map(savedEntity, EmployeeDTO.class);
+	        EmployeeEntity saved = employeeRepository.save(entity);
+	        return modelMapper.map(saved, EmployeeDTO.class);
 	}
 
 	@Override
@@ -36,14 +40,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public EmployeeDTO getEmployeeById(Long id) {
+	public EmployeeDTO getEmployeeById(String id) {
 		return employeeRepository.findById(id)
                 .map(entity -> modelMapper.map(entity, EmployeeDTO.class))
                 .orElse(null);
 	}
 
 	@Override
-	public EmployeeDTO updateEmployee(Long id, EmployeeDTO dto) {
+	public EmployeeDTO updateEmployee(String id, EmployeeDTO dto) {
 	    EmployeeEntity existing = employeeRepository.findById(id)
 	        .orElseThrow(() -> new IllegalArgumentException(
 	        		"Employee not found with id: " + id));
@@ -60,7 +64,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public EmployeeDTO deleteEmployee(Long id) {
+	public EmployeeDTO deleteEmployee(String id) {
 		
 		EmployeeEntity department = employeeRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException(
@@ -70,5 +74,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeRepository.deleteById(id);
         
         return dto;
+	}
+
+	@Override
+	public String findMaxId() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

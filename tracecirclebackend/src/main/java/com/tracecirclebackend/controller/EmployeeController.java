@@ -27,7 +27,7 @@ private final EmployeeServiceImpl employeeServiceImpl;
 	@PostMapping
 	public EmployeeDTO createEmployee(@RequestBody EmployeeDTO empDto) {
 		
-		return employeeServiceImpl.saveEmployee(empDto);
+		return employeeServiceImpl.createEmployee(empDto);
 	}
 	
 	@GetMapping
@@ -37,20 +37,20 @@ private final EmployeeServiceImpl employeeServiceImpl;
 	}
 	
 	@GetMapping("/{id}")
-	public EmployeeDTO getEmployeeById(@PathVariable long id) {
+	public EmployeeDTO getEmployeeById(@PathVariable String id) {
 		
 		return employeeServiceImpl.getEmployeeById(id);
 	}
 	
 	@PutMapping("/{id}")
-	public EmployeeDTO updateEmployeeDTO(@PathVariable long id,
+	public EmployeeDTO updateEmployeeDTO(@PathVariable String id,
 			@RequestBody EmployeeDTO employeeDTO) {
 		
 		return employeeServiceImpl.updateEmployee(id, employeeDTO);
 	}
 	
 	@DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteDepartment(@PathVariable Long id) {
+    public ResponseEntity<?> deleteDepartment(@PathVariable String id) {
         EmployeeDTO deleted = employeeServiceImpl.deleteEmployee(id);
 
         if (deleted == null) {

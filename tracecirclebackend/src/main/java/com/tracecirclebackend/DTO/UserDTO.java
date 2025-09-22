@@ -1,18 +1,18 @@
-package com.tracecirclebackend.DTO;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class UserDTO {
+	package com.tracecirclebackend.DTO;
 	
-	 private Long userId;
-
-	 private String userEmail;
-
-	 private String userPassword; 
-
-}
+	import lombok.AllArgsConstructor;
+	import lombok.Data;
+	import lombok.NoArgsConstructor;
+	
+	@Data
+	@AllArgsConstructor
+	@NoArgsConstructor
+	public class UserDTO {
+		
+		 private String id;
+	
+		 private String email;
+	
+		 private String password; 
+	
+	}

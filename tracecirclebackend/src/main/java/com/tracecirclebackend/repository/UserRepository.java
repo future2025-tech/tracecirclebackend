@@ -1,14 +1,12 @@
 package com.tracecirclebackend.repository;
 
-import java.util.Optional;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.tracecirclebackend.entity.UserEntity;
 
 @Repository
-public interface UserRepository extends JpaRepository<UserEntity, Long> {
+public interface UserRepository extends JpaRepository<UserEntity, String> {
 
-	Optional<UserEntity> findByEmail(String email);
-}
+	UserEntity findByEmail(String email);
+	}
