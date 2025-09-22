@@ -19,6 +19,8 @@ public class UserEntity {
     private String email;
 
     @Column(nullable = false)
-    private String password; // stored as hashed
+    private String password;
+    
+    private String resetPassword;
 }
 
